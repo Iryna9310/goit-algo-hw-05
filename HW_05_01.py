@@ -1,4 +1,4 @@
-def caching_fibonacci(n):
+def caching_fibonacci():
   cache = {}  #створення пустого словнику
   def fibonacci(n):  
     if n <= 0:   #перевірка умов
@@ -10,7 +10,8 @@ def caching_fibonacci(n):
     else:
         cache[n] = fibonacci(n - 1) + fibonacci(n - 2)  #формула для розрахунку
         return cache[n]
-  return fibonacci(n)  #повернення внутрішньої фінкції
+  return fibonacci  #повернення внутрішньої фінкції
 
-fib = caching_fibonacci
+fib = caching_fibonacci()
 print(fib(10))
+print(fib(15))

@@ -21,14 +21,18 @@ def parse_input(user_input):
 
 @input_error
 def add_contact(args, contacts): #function for adding new contact
-    name, phone = args
-    contacts[name] = phone
-    return "Contact added."
+    if args[0] in contacts.keys():
+        return "The contact is already exist"
+    else:
+        name, phone = args
+        contacts[name] = phone
+        return "Contact added."
 
 @input_error
 def change_username_phone(args, contacts): # function to change user phone
     if args[0] in contacts.keys():
-        add_contact(args, contacts)
+        name, phone = args
+        contacts[name] = phone
         return "The phone is successfully changed"
     else:
         raise(KeyError)
@@ -46,7 +50,7 @@ def all_phones(contacts): #function for returning all contacts
     
 
 def main():
-    contacts = {}   #'John':"123", 'Jane':"234", 'Steve':"555"
+    contacts = {'John':"123", 'Jane':"234", 'Steve':"555"}   #'John':"123", 'Jane':"234", 'Steve':"555"
     print("Welcome to the assistant bot!")
     while True:
         user_input = input("Enter a command: ")
